@@ -18,8 +18,8 @@ public class AddTeamTest {
 
         // Set base URL for the new context
         var contextOptions = new Browser.NewContextOptions();
-        // TODO: fix the URL
-        contextOptions.setBaseURL("https://<letter>.<group>.hr.dmerej.info");
+        // TODO: fix the URL DONE
+        contextOptions.setBaseURL("https://c.lsi2.hr.dmerej.info");
         var context = browser.newContext(contextOptions);
 
         var page = context.newPage();
@@ -36,6 +36,7 @@ public class AddTeamTest {
         var teamName = "my team";
         nameInput.fill(teamName);
         page.click("text='Add'");
+
 
         // Check that the team has been added
         page.navigate("/teams");
