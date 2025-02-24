@@ -18,5 +18,6 @@ public class ResetManagerTest extends Setup {
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Edit")).first().click();
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Promote as manager")).click();
         // Todo end with assert
+
     }
 }
