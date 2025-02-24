@@ -6,11 +6,14 @@ import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.*;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.api.extension.ExtensionContext;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
 @UsePlaywright
-public class AddNewEmployeeTest {
+public class AddNewEmployeeTest extends Setup{
+
     @Test
     void AddNewEmployeeTest(Page page) {
         page.navigate("https://c.lsi2.hr.dmerej.info/");
