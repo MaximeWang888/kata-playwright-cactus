@@ -3,6 +3,8 @@ package info.dmerej;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.AriaRole;
+import info.dmerej.models.AddEmployee;
+import info.dmerej.models.UpdateAdress;
 import org.junit.jupiter.api.Test;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
@@ -12,22 +14,19 @@ public class UpdateAddressTest extends Setup {
 
     @Test
     public void updateAddress(Page page){
-        page.navigate("https://c.lsi2.hr.dmerej.info/");
-        Helper.createUser(page, "Maxime", "maxime.wang@gmail.com", "13 rue du Bronks", "Paris", "75013", "2002-05-01");
+        // Given
+        AddEmployee addEmployee = new AddEmployee(page);
+        addEmployee.navigate();
+        addEmployee.createUser("Maxime", "maxime.wang@gmail.com", "13 rue du Bronks", "Paris", "75013", "2002-05-01");
+        UpdateAdress updateAdress = new UpdateAdress(page, addEmployee);
+        String adress1 = "13 rue des tulips";
+        String adress2 = "13 rue des lilas";
 
-        page.navigate("https://c.lsi2.hr.dmerej.info/");
+        // When
+        updateAdress.updateAddress(adress1, adress2);
 
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("List employees")).click();
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Edit")).first().click();
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Update address")).click();
-        page.locator("#id_address_line1").fill("13 rue des tulips");
-        page.locator("#id_address_line2").fill("13 rue des lilas");
-        page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Update")).click();
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Home")).click();
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("List employees")).click();
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Edit")).click();
-        page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Update address")).click();
-        assertThat(page.locator("#id_address_line1")).hasValue("13 rue des tulips");
-        assertThat(page.locator("#id_address_line2")).hasValue("13 rue des lilas");
+        // Then
+        assertThat(page.locator("#id_address_line1")).hasValue(adress1);
+        assertThat(page.locator("#id_address_line2")).hasValue(adress2);
     }
 }

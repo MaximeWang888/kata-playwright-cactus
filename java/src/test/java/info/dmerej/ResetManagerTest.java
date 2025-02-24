@@ -10,6 +10,7 @@ public class ResetManagerTest extends Setup {
     @Test
     void ResetManager(Page page) {
         page.navigate("https://c.lsi2.hr.dmerej.info/");
+
         Helper.createUser(page, "Maxime", "maxime.wang@gmail.com", "13 rue du bronks", "Paris", "75013", "2002-05-01");
         page.navigate("https://c.lsi2.hr.dmerej.info/");
 
