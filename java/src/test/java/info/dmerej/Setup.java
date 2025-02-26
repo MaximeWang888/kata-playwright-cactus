@@ -7,7 +7,6 @@ import org.junit.jupiter.api.BeforeEach;
 
 @UsePlaywright
 public class Setup {
-
     @BeforeEach
     public void beforeEach(Page page) {
         System.out.println("Setup passed and database is reset.");

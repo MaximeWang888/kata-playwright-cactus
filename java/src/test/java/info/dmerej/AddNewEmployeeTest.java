@@ -18,7 +18,7 @@ public class AddNewEmployeeTest extends Setup{
 
         // When
         addEmployee.navigate();
-        addEmployee.createUser("Maxime", "maxime.wang@gmail.com", "13 rue du bronks", "Paris", "75013", "2002-05-01");
+        addEmployee.createEmployee("Maxime", "maxime.wang@gmail.com", "13 rue du bronks", "Paris", "75013", "2002-05-01");
 
         // Then
         assertThat(page.locator("tbody")).containsText("Maxime");

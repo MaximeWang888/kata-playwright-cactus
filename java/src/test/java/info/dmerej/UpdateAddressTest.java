@@ -2,7 +2,6 @@ package info.dmerej;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.junit.UsePlaywright;
-import com.microsoft.playwright.options.AriaRole;
 import info.dmerej.models.AddEmployee;
 import info.dmerej.models.UpdateAdress;
 import org.junit.jupiter.api.Test;
@@ -17,8 +16,8 @@ public class UpdateAddressTest extends Setup {
         // Given
         AddEmployee addEmployee = new AddEmployee(page);
         addEmployee.navigate();
-        addEmployee.createUser("Maxime", "maxime.wang@gmail.com", "13 rue du Bronks", "Paris", "75013", "2002-05-01");
-        UpdateAdress updateAdress = new UpdateAdress(page, addEmployee);
+        addEmployee.createEmployee("Maxime", "maxime.wang@gmail.com", "13 rue du Bronks", "Paris", "75013", "2002-05-01");
+        UpdateAdress updateAdress = new UpdateAdress(page);
         String adress1 = "13 rue des tulips";
         String adress2 = "13 rue des lilas";
 

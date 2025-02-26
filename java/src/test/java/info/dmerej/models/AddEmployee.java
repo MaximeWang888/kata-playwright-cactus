@@ -2,7 +2,6 @@ package info.dmerej.models;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import info.dmerej.Helper;
 
 public class AddEmployee {
     private Page page;
@@ -11,7 +10,7 @@ public class AddEmployee {
         this.page = page;
     }
 
-    public void createUser(String name, String email, String address, String city, String zipCode, String date){
+    public void createEmployee(String name, String email, String address, String city, String zipCode, String date){
         page.getByPlaceholder("Name").click();
         page.getByPlaceholder("Name").fill(name);
         page.getByPlaceholder("Name").press("Tab");
